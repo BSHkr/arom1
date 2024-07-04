@@ -24,4 +24,6 @@ public class Message extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "chatroom_id")
     private ChatRoom chatroom;
+
+
 }

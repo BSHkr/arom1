@@ -4,6 +4,7 @@ package com.example.team1.domain;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.geo.Point;
@@ -25,5 +26,16 @@ public class Location extends BaseEntity {
 
     @OneToOne(mappedBy = "location")
     private Member member;
+
+    @Builder
+    private Location(Point point) {
+        this.point = point;
+    }
+    public static Location newLocation(Point point) {
+        return Location.builder()
+                .point(point)
+                .build();
+    }
+
 
 }
