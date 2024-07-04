@@ -2,6 +2,7 @@ package com.example.team1.domain;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -19,4 +20,14 @@ public class Image extends BaseEntity {
     @JoinColumn(name = "member_id")
     private Member member;
 
+    @Builder
+    private Image(String url) {
+        this.url = url;
+    }
+
+    public static Image newImage(String url){
+        return Image.builder()
+                .url(url)
+                .build();
+    }
 }
